@@ -1,3 +1,5 @@
+import org.gradle.api.JavaVersion
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -29,6 +31,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    buildDir = File("D:/app/Android/Gradle/app/build")
+    buildFeatures {
+        viewBinding = false
+    }
+    buildToolsVersion = "34.0.0"
 }
 
 dependencies {
