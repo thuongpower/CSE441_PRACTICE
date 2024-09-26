@@ -1,5 +1,7 @@
 package com.example.ex04;
 
+import static android.os.Build.VERSION_CODES.R;
+
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
