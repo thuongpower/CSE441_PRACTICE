@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Phương thức này được gọi khi SubActivity trả về kết quả
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

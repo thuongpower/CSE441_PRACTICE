@@ -14,7 +14,7 @@ public class SubActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sub_main);  // Tái sử dụng layout activity_input
+        setContentView(R.layout.sub_main);
 
         etName = findViewById(R.id.etName);
         etGPA = findViewById(R.id.etGPA);
@@ -22,11 +22,11 @@ public class SubActivity extends AppCompatActivity {
         findViewById(R.id.btnSubmit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Lấy dữ liệu từ EditText
+
                 String name = etName.getText().toString();
                 String gpa = etGPA.getText().toString();
 
-                // Tạo Intent để gửi dữ liệu về MainActivity
+
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("name", name);
                 resultIntent.putExtra("gpa", gpa);
