@@ -27,16 +27,5 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome Class"
-            android:textSize="16sp"
-            android:layout_marginTop="40sp"
-            android:layout_margin="@dimen/material_emphasis_high_type"/>
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        android:layout_height="match_parent" />
 </LinearLayout>

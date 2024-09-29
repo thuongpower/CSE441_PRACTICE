@@ -22,6 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="OK"
-        android:textSize="18sp" />
+        android:textSize="25sp" />
 
 </LinearLayout>
