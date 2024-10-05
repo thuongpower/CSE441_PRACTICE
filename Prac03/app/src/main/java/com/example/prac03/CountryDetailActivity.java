@@ -1,43 +1,58 @@
 package com.example.prac03;
 
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CountryDetailActivity extends AppCompatActivity {
-    private ImageView countryFlag;
-    private TextView countryName, countryCapital, countryPopulation, countryArea, countryDensity, worldShare;
+import com.example.prac03.Country;
+import com.example.prac03.R;
 
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class CountryDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_country_detail); // Kết nối với layout
+        setContentView(R.layout.activity_country_detail);
 
-        // Liên kết các View từ layout
-        countryFlag = findViewById(R.id.country_flag_detail);
-        countryName = findViewById(R.id.country_name_detail);
-        countryCapital = findViewById(R.id.country_capital_detail);
-        countryPopulation = findViewById(R.id.country_population);
-        countryArea = findViewById(R.id.country_area);
-        countryDensity = findViewById(R.id.country_density);
-        worldShare = findViewById(R.id.country_world_share);
 
-        // Nhận dữ liệu từ Intent
         Country country = (Country) getIntent().getSerializableExtra("country");
 
-        // Nếu country không null, hiển thị thông tin chi tiết
+
         if (country != null) {
-            countryFlag.setImageResource(country.getFlag());
-            countryName.setText(country.getName());
-            countryCapital.setText("Capital: " + country.getCapital());
-            countryPopulation.setText("Population: " + country.getPopulation());
-            countryArea.setText("Area: " + country.getArea());
-            countryDensity.setText("Density: " + country.getDensity());
-            worldShare.setText("World Share: " + country.getWorldShare());
+            TextView nameTextView = findViewById(R.id.detailCountryName);
+            TextView capitalTextView = findViewById(R.id.detailCountryCapital);
+            TextView populationTextView = findViewById(R.id.detailCountryPopulation);
+            TextView areaTextView = findViewById(R.id.detailCountryArea);
+            TextView densityTextView = findViewById(R.id.detailCountryDensity);
+            TextView worldShareTextView = findViewById(R.id.detailCountryWorldShare);
+            ImageView flagImageView = findViewById(R.id.detailCountryFlag);
+
+
+            nameTextView.setText("Nation: " + country.getName());
+            capitalTextView.setText("Capital: " + country.getCapital());
+            populationTextView.setText("Population: " + country.getPopulation()+" people");
+            areaTextView.setText("Area: " + country.getArea() + " Km2");
+            densityTextView.setText("Density: " + country.getDensity() + " people/km2");
+            worldShareTextView.setText("World Share: " + country.getWorldShare() + " %");
+            flagImageView.setImageResource(country.getFlagResourceId());
+        } else {
+
+            Toast.makeText(this, "Error loading country details", Toast.LENGTH_SHORT).show();
         }
+
+        Button backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }
-
-

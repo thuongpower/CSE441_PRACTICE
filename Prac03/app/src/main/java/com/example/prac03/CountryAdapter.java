@@ -1,5 +1,4 @@
 package com.example.prac03;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -7,74 +6,61 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.prac03.Country;
+import com.example.prac03.R;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder> {
+public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHolder> {
     private List<Country> countryList;
     private Context context;
 
-    // Constructor cho adapter
     public CountryAdapter(List<Country> countryList, Context context) {
         this.countryList = countryList;
         this.context = context;
     }
 
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView nameTextView;
+        TextView capitalTextView;
+        ImageView flagImageView;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            nameTextView = itemView.findViewById(R.id.countryName);
+            capitalTextView = itemView.findViewById(R.id.countryCapital);
+            flagImageView = itemView.findViewById(R.id.countryFlag);
+        }
+    }
+
     @NonNull
     @Override
-    public CountryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Inflate layout cho mỗi item trong danh sách
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.country_item, parent, false);
-        return new CountryViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.country_item, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CountryViewHolder holder, int position) {
-        // Bind dữ liệu vào ViewHolder
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Country country = countryList.get(position);
-        holder.bind(country);
+        holder.nameTextView.setText(country.getName());
+        holder.capitalTextView.setText(country.getCapital());
+        holder.flagImageView.setImageResource(country.getFlagResourceId());
+
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(context, CountryDetailActivity.class);
+            intent.putExtra("country", country);
+            context.startActivity(intent);
+        });
+
     }
 
     @Override
     public int getItemCount() {
-        return countryList.size();  // Trả về số lượng quốc gia trong danh sách
-    }
-
-    public class CountryViewHolder extends RecyclerView.ViewHolder {
-        TextView countryName, countryCapital;
-        ImageView countryFlag;
-
-        public CountryViewHolder(@NonNull View itemView) {
-            super(itemView);
-            // Liên kết các view trong layout item
-            countryName = itemView.findViewById(R.id.country_name);
-            countryCapital = itemView.findViewById(R.id.country_capital);
-            countryFlag = itemView.findViewById(R.id.country_flag);
-
-            // Xử lý sự kiện khi nhấn vào một item
-            itemView.setOnClickListener(v -> {
-                int position = getAdapterPosition();
-                if (position != RecyclerView.NO_POSITION) {
-                    Country selectedCountry = countryList.get(position);
-
-                    // Tạo Intent để chuyển đến CountryDetailActivity
-                    Intent intent = new Intent(context, CountryDetailActivity.class);
-                    intent.putExtra("country", selectedCountry);  // Truyền đối tượng Country qua Intent
-                    context.startActivity(intent);  // Bắt đầu Activity mới
-                }
-            });
-        }
-
-        // Hàm để bind dữ liệu cho từng item
-        public void bind(Country country) {
-            countryName.setText(country.getName());        // Hiển thị tên quốc gia
-            countryCapital.setText(country.getCapital());  // Hiển thị thủ đô quốc gia
-            countryFlag.setImageResource(country.getFlag());  // Hiển thị cờ quốc gia
-        }
+        return countryList.size();
     }
 }
-
-
