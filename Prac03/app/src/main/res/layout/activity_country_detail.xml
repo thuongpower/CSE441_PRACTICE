@@ -65,7 +65,7 @@
 
     <Button
         android:id="@+id/backButton"
-        android:layout_width="396dp"
+        android:layout_width="376dp"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:text="Quay lại" />

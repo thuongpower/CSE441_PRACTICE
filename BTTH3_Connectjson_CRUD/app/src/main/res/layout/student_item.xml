@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <!-- ImageView hiển thị giới tính (nam/nữ) -->
+    <ImageView
+        android:id="@+id/imageViewGender"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="@string/student_gender" />
+
+    <!-- TextView hiển thị mã sinh viên -->
+    <TextView
+        android:id="@+id/tvStudentId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/imageViewGender"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="B27DCCN101"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <!-- TextView hiển thị tên sinh viên -->
+    <TextView
+        android:id="@+id/tvStudentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/imageViewGender"
+        app:layout_constraintTop_toBottomOf="@id/tvStudentId"
+        android:text="Mai Thị Hoa"
+        android:textSize="14sp" />
+
+    <!-- TextView hiển thị GPA sinh viên -->
+    <TextView
+        android:id="@+id/tvGpa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="3.75"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="16sp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
