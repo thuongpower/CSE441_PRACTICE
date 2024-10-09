@@ -1,61 +1,76 @@
 package com.example.btth3_connectjson_crud;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
-public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentViewHolder> {
-    private List<Student> studentList;
+public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHolder> {
 
-    public StudentAdapter(List<Student> studentList) {
-        this.studentList = studentList;
+    private List<Student> students;
+    private Context context;
+    private OnStudentClickListener onStudentClickListener;
+
+    public interface OnStudentClickListener {
+        void onStudentClick(Student student);
+    }
+
+    public StudentAdapter(List<Student> students, Context context, OnStudentClickListener listener) {
+        this.students = students;
+        this.context = context;
+        this.onStudentClickListener = listener;
     }
 
     @NonNull
     @Override
-    public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.student_item, parent, false);
-        return new StudentViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.student_item, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
-        Student student = studentList.get(position);
-        holder.fullName.setText(student.getFullName().getLast() + " " +
-                student.getFullName().getMiddle() + " " + student.getFullName().getFirst());
-        holder.gpa.setText(String.valueOf(student.getGpa()));
-        holder.major.setText(student.getMajor());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Student student = students.get(position);
+        holder.textViewID.setText("ID: " + student.id);
+        holder.nameTextView.setText(student.hoTen);
+        holder.gpaTextView.setText("GPA: " + student.gpa);
 
-        // Hiển thị ảnh theo giới tính
-        if (student.getGender().equalsIgnoreCase("Nam")) {
-            holder.imageViewStudent.setImageResource(R.drawable.male); // Sử dụng male.png cho Nam
-        } else if (student.getGender().equalsIgnoreCase("Nữ")) {
-            holder.imageViewStudent.setImageResource(R.drawable.female); // Sử dụng female.png cho Nữ
+        // Thiết lập hình ảnh dựa trên giới tính
+        if ("Nam".equals(student.gioiTinh)) {
+            holder.imageViewGender.setImageResource(R.drawable.male);
+        } else {
+            holder.imageViewGender.setImageResource(R.drawable.female);
         }
+
+        holder.itemView.setOnClickListener(v -> onStudentClickListener.onStudentClick(student));
     }
+
+
 
     @Override
     public int getItemCount() {
-        return studentList.size();
+        return students.size();
     }
 
-    public static class StudentViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imageViewStudent;
-        TextView fullName, gpa, major;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView textViewID;
+        TextView nameTextView;
+        TextView gpaTextView;
+        ImageView imageViewGender;  // Khai báo ImageView
 
-        public StudentViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
-            fullName = itemView.findViewById(R.id.tvStudentName);
-            gpa = itemView.findViewById(R.id.tvGpa);
-            major = itemView.findViewById(R.id.tvTitle);
+            textViewID = itemView.findViewById(R.id.textViewID);
+            nameTextView = itemView.findViewById(R.id.textViewName);
+            gpaTextView = itemView.findViewById(R.id.textViewGPA);
+            imageViewGender = itemView.findViewById(R.id.imageViewGender); // Ánh xạ ImageView
         }
     }
+
 }
 

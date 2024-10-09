@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddStudentActivity"/>
+        <activity android:name=".AddStudentDialog"/>
+        <activity android:name=".StudentDetailActivity"/>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

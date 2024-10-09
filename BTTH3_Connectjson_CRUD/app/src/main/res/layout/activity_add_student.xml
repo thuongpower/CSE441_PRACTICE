@@ -1,160 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AddStudentActivity"
+    android:layout_height="wrap_content"
     android:padding="16dp">
 
-    <!-- Tiêu đề thêm sinh viên -->
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/txtHoten"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Thêm sinh viên mới"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:hint="Họ và tên"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Mã sinh viên -->
     <EditText
-        android:id="@+id/etStudentId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mã sinh viên"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Tên sinh viên -->
-    <EditText
-        android:id="@+id/etStudentName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Tên sinh viên"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/etStudentId"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
-
-    <!-- Ngày sinh -->
-    <EditText
-        android:id="@+id/etBirthDate"
-        android:layout_width="match_parent"
+        android:id="@+id/txtBirthDate"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Ngày sinh"
-        android:inputType="date"
-        app:layout_constraintTop_toBottomOf="@id/etStudentName"
+        app:layout_constraintTop_toBottomOf="@+id/txtHoten"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"/>
 
-    <!-- Địa chỉ -->
     <EditText
-        android:id="@+id/spAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/etBirthDate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:hint="Địa chỉ" />
-
-    <!-- Email -->
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="match_parent"
+        android:id="@+id/txtEmail"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@id/spAddress"
+        app:layout_constraintTop_toBottomOf="@+id/txtBirthDate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"/>
 
-    <!-- Chuyên ngành -->
     <EditText
-        android:id="@+id/spMajor"
-        android:layout_width="match_parent"
+        android:id="@+id/txtAddress"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/etEmail"
+        android:hint="Địa chỉ"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:hint="Chuyên ngành" />
+        android:layout_marginTop="8dp"/>
 
-    <!-- GPA -->
     <EditText
-        android:id="@+id/etGpa"
-        android:layout_width="match_parent"
+        android:id="@+id/txtChuyenNganh"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Chuyên ngành"
+        app:layout_constraintTop_toBottomOf="@+id/txtAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <EditText
+        android:id="@+id/txtGPA"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="GPA"
         android:inputType="numberDecimal"
-        app:layout_constraintTop_toBottomOf="@id/spMajor"
+        app:layout_constraintTop_toBottomOf="@+id/txtChuyenNganh"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"/>
 
-    <!-- Năm học -->
-    <EditText
-        android:id="@+id/etYear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="SV năm thứ:"
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@id/etGpa"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
-
-    <!-- Giới tính -->
     <RadioGroup
-        android:id="@+id/rgGender"
+        android:id="@+id/rgGioiTinh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/etYear"
+        app:layout_constraintTop_toBottomOf="@+id/txtGPA"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/rbMale"
+            android:id="@+id/rbNam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nam" />
 
         <RadioButton
-            android:id="@+id/rbFemale"
+            android:id="@+id/rbNu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nữ" />
 
         <RadioButton
-            android:id="@+id/rbOther"
+            android:id="@+id/rbKhac"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Khác" />
-
     </RadioGroup>
 
-    <!-- Nút hoàn tất -->
     <Button
-        android:id="@+id/btnComplete"
-        android:layout_width="match_parent"
+        android:id="@+id/btnHoanTat"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="HOÀN TẤT"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/rgGender"
+        android:text="Hoàn tất"
+        app:layout_constraintTop_toBottomOf="@+id/rgGioiTinh"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
