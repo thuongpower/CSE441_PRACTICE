@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "839846364473",
+    "project_id": "sinhvien-51c7a",
+    "storage_bucket": "sinhvien-51c7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839846364473:android:7cd4e93401d04f7f9f94e8",
+        "android_client_info": {
+          "package_name": "com.example.btth04_firebase_crud"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC55GH8FHxbB0DgQbd6R_JBNcQoOzn87qM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
